@@ -1,20 +1,8 @@
 #!/usr/bin/python
 import csv
 
-client_hello_to_disect_path     = "example2.dump"
-#client_hello_to_disect_path     = "annotated_client_hello.dump"
-
-rfc_mapping_path                = "helpers/mapping-rfc.csv"
+client_hello_to_disect_path     = "examples/example2.dump"
 iana_rfc_mapping_path           = "helpers/tls-p.csv"
-
-def import_rfc_mapping(import_file_path):
-    rfc_map = {}
-    with open(import_file_path, newline='\n') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=';')
-        for row in spamreader:
-            k,v = row
-            rfc_map[k]=v
-    return rfc_map
 
 def import_iana_rfc_mapping(import_file_path):
     iana_rfc_map = {}
@@ -53,7 +41,6 @@ def translate_cipher_values(cipher_suites):
             cipher_suite_annotations.append((None,None,None,None))
     return cipher_suite_annotations
 
-rfc_mapping             = import_rfc_mapping(rfc_mapping_path)
 iana_rfc_mapping        = import_iana_rfc_mapping(iana_rfc_mapping_path)
 ch_dict                 = read_client_hello(client_hello_to_disect_path)
 
@@ -93,4 +80,3 @@ cipher_suites           = get_bytes(cipher_suites_bytes[0], cipher_suites_bytes[
 print("Cipher suites: "     + cipher_suites)
 
 translated_cipher_suites = translate_cipher_values(cipher_suites)
-
