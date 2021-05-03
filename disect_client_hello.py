@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import csv
 
-client_hello_to_disect_path     = "example_client_hello.dump"
+client_hello_to_disect_path     = "example2.dump"
 #client_hello_to_disect_path     = "annotated_client_hello.dump"
 
 rfc_mapping_path                = "helpers/mapping-rfc.csv"
